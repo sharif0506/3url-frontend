@@ -1,0 +1,56 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+
+  &:hover {
+    background: var(--accent-bg);
+    border-color: var(--accent-border);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* GitHub button: dark background to make the monochrome icon pop */
+.github {
+  background: #24292f;
+  border-color: #24292f;
+  color: #fff;
+
+  &:hover {
+    background: #32393f;
+    border-color: #32393f;
+  }
+}
+
+[data-theme='dark'] .github {
+  background: #f0f6fc;
+  border-color: #f0f6fc;
+  color: #24292f;
+
+  &:hover {
+    background: #dde4ea;
+    border-color: #dde4ea;
+  }
+}
