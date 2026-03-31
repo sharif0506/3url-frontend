@@ -1,13 +1,12 @@
 import { Button, Input } from '@/components/ui'
 import { useLoginForm } from '@/features/auth/hooks/useLoginForm'
-import styles from './LoginForm.module.css'
 
 export function LoginForm() {
   const { values, isLoading, error, handleChange, handleSubmit } = useLoginForm()
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
-      <div className={styles.fields}>
+    <form className="flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
+      <div className="flex flex-col gap-4">
         <Input
           label="Email"
           type="email"
@@ -31,16 +30,22 @@ export function LoginForm() {
       </div>
 
       {error && (
-        <p className={styles.error} role="alert">
+        <p
+          className="text-sm text-red-500 bg-red-500/8 border border-red-500/25 rounded-lg px-3 py-2.5 m-0"
+          role="alert"
+        >
           {error}
         </p>
       )}
 
-      <div className={styles.actions}>
-        <a href="/forgot-password" className={styles.forgotLink}>
+      <div className="flex flex-col gap-3">
+        <a
+          href="/forgot-password"
+          className="text-[13px] text-accent self-end hover:underline"
+        >
           Forgot password?
         </a>
-        <Button type="submit" loading={isLoading} style={{ width: '100%' }}>
+        <Button type="submit" loading={isLoading} className="w-full">
           Sign in
         </Button>
       </div>

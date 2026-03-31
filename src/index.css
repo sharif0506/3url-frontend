@@ -1,69 +1,62 @@
+@import "tailwindcss";
+
+/* Configure dark mode to use data-theme attribute */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Map design tokens to Tailwind color utilities */
+@theme {
+  --color-accent:        var(--accent);
+  --color-accent-hover:  var(--accent-hover);
+  --color-accent-text:   var(--accent-text);
+  --color-accent-bg:     var(--accent-bg);
+  --color-accent-border: var(--accent-border);
+  --color-page-bg:       var(--bg);
+  --color-page-text:     var(--text);
+  --color-page-heading:  var(--text-h);
+  --color-page-border:   var(--border);
+
+  --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+}
+
+/* Design tokens — light mode */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #0f0f0f;
-  --accent-hover: #333333;
-  --accent-text: #ffffff;
-  --accent-bg: rgba(0, 0, 0, 0.05);
+  --accent:        #0f0f0f;
+  --accent-hover:  #333333;
+  --accent-text:   #ffffff;
+  --accent-bg:     rgba(0, 0, 0, 0.05);
   --accent-border: rgba(0, 0, 0, 0.2);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --text:   #6b6375;
+  --text-h: #08060d;
+  --bg:     #ffffff;
+  --border: #e5e4e7;
+  --shadow: rgba(0,0,0,0.1) 0 10px 15px -3px, rgba(0,0,0,0.05) 0 4px 6px -2px;
 
-  font: 16px/145% var(--sans);
-  letter-spacing: 0.18px;
   color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-[data-theme='dark'] {
-  --text: #9ca3af;
-  --text-h: #f3f4f6;
-  --bg: #16171d;
-  --border: #2e303a;
-  --code-bg: #1f2028;
-  --accent: #ffffff;
-  --accent-hover: #e5e7eb;
-  --accent-text: #0f0f0f;
-  --accent-bg: rgba(255, 255, 255, 0.08);
+/* Design tokens — dark mode */
+[data-theme="dark"] {
+  --accent:        #ffffff;
+  --accent-hover:  #e5e7eb;
+  --accent-text:   #0f0f0f;
+  --accent-bg:     rgba(255, 255, 255, 0.08);
   --accent-border: rgba(255, 255, 255, 0.25);
-  --shadow:
-    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-}
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+  --text:   #9ca3af;
+  --text-h: #f3f4f6;
+  --bg:     #16171d;
+  --border: #2e303a;
+  --shadow: rgba(0,0,0,0.4) 0 10px 15px -3px, rgba(0,0,0,0.25) 0 4px 6px -2px;
 }
 
 body {
   margin: 0;
-}
-
-#root {
-  min-height: 100svh;
-}
-
-h1,
-h2,
-h3 {
-  font-family: var(--sans);
-  font-weight: 600;
-  color: var(--text-h);
-  margin: 0;
-}
-
-p {
-  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
 }
