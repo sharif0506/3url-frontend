@@ -1,24 +1,6 @@
 import { LoginForm, SocialLoginButtons } from '@/features/auth'
 import { ThemeToggle } from '@/components/ui'
-
-function Logo() {
-  return (
-    <svg
-      className="w-11 h-14 text-page-heading"
-      viewBox="0 0 70 90"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <line x1="22" y1="16" x2="22" y2="74" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
-      <line x1="22" y1="45" x2="50" y2="45" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
-      <path d="M 22 16 A 36 29 0 0 1 22 74" stroke="currentColor" strokeWidth="4.5" fill="none" strokeLinecap="round" />
-      <circle cx="22" cy="16" r="7" fill="currentColor" />
-      <circle cx="50" cy="45" r="7" fill="currentColor" />
-      <circle cx="22" cy="74" r="7" fill="currentColor" />
-    </svg>
-  )
-}
+import logoSrc from '@/assets/3url.svg'
 
 export function LoginPage() {
   return (
@@ -27,7 +9,11 @@ export function LoginPage() {
 
       {/* Logo + brand name */}
       <div className="flex flex-col items-center gap-3">
-        <Logo />
+        <img
+          src={logoSrc}
+          alt="3URL logo"
+          className="w-11 h-14 dark:invert"
+        />
         <span className="text-[28px] font-bold text-page-heading tracking-tight">3URL</span>
       </div>
 
