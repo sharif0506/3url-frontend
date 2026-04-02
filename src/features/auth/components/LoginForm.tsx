@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Button, Input } from '@/components/ui'
 import { useLoginForm } from '@/features/auth/hooks/useLoginForm'
 
@@ -39,12 +40,12 @@ export function LoginForm() {
       )}
 
       <div className="flex flex-col gap-3">
-        <a
-          href="/forgot-password"
+        <Link
+          to="/forgot-password"
           className="text-[13px] text-accent self-end hover:underline"
         >
           Forgot password?
-        </a>
+        </Link>
         <Button type="submit" loading={isLoading} className="w-full">
           Sign in
         </Button>

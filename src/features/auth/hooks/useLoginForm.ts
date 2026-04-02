@@ -1,4 +1,6 @@
-import { useState, type FormEvent } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { loginApi } from '@/features/auth/api/loginApi'
 import type { LoginCredentials } from '@/features/auth/types'
 
 interface UseLoginFormReturn {
@@ -6,30 +8,31 @@ interface UseLoginFormReturn {
   isLoading: boolean
   error: string | null
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>
+  handleSubmit: (e: React.SyntheticEvent<HTMLFormElement>) => Promise<void>
 }
 
 export function useLoginForm(): UseLoginFormReturn {
   const [values, setValues] = useState<LoginCredentials>({ email: '', password: '' })
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const navigate = useNavigate()
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
     setValues((prev) => ({ ...prev, [name]: value }))
   }
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault()
     setError(null)
     setIsLoading(true)
 
     try {
-      // TODO: replace with real API call
-      await new Promise<void>((resolve) => setTimeout(resolve, 800))
-    } catch {
-      setError('Invalid email or password. Please try again.')
-    } finally {
+      const { data } = await loginApi(values.email, values.password)
+      localStorage.setItem('token', data.token)
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to reach the server.')
       setIsLoading(false)
     }
   }
