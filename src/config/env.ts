@@ -14,5 +14,6 @@ export const API_ROUTES = {
     register:       `${env.apiUrl}/users/register`,
     forgotPassword: `${env.apiUrl}/users/forgot-password`,
     resetPassword:  `${env.apiUrl}/users/reset-password`,
+    googleOAuth:    `${env.apiUrl}/users/auth/google`,
   },
 } as const

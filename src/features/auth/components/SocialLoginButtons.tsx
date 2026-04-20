@@ -24,9 +24,11 @@ const baseButton = [
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
 ].join(' ')
 
+import { API_ROUTES } from '@/config/env'
+
 export function SocialLoginButtons() {
   function handleGoogle() {
-    // TODO: trigger Google OAuth flow
+    window.location.href = API_ROUTES.auth.googleOAuth
   }
 
   function handleGitHub() {
